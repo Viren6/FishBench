@@ -159,7 +159,7 @@ namespace FishBench
                 CreateNoWindow = true,
                 UseShellExecute = false,
                 FileName = pathB,
-                Arguments = "bench",
+                Arguments = benchCommand,
                 //FileName = "cmd.exe",
                 //Arguments = "/c start /B /REALTIME /AFFINITY 0x1 \"" + pathB + "\" bench 1>nul",
                 RedirectStandardError = true
