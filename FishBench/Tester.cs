@@ -12,7 +12,7 @@ namespace FishBench
     class Tester
     {
         private int amount;
-        private string pathA, pathB;
+        private string pathA, pathB, benchCommand;
         private decimal sumA, sumB;
         private int completedA, completedB;
 
@@ -118,20 +118,16 @@ namespace FishBench
                 return (-(double)AverageDiff) / (double)AverageA;
             }
         }
-        public Tester(string pathA, string pathB)
+        public Tester(string pathA, string pathB, string benchCommand)
         {
             this.pathA = pathA;
             this.pathB = pathB;
+            this.benchCommand = benchCommand;
             amount = 5;
             completedA = completedB = 0;
             jobInProgress = false;
         }
-        public Tester() : this("", "") { }
-        public void SetPathes(string pathA, string pathB)
-        {
-            this.pathA = pathA;
-            this.pathB = pathB;
-        }
+        public Tester() : this("", "", "") { }
         public void WaitJobEnd()
         {
             if (job != null && jobInProgress)
@@ -154,7 +150,7 @@ namespace FishBench
                 CreateNoWindow = true,
                 UseShellExecute = false,
                 FileName = pathA,
-                Arguments = "bench",
+                Arguments = benchCommand,
                 //FileName = "cmd.exe",
                 //Arguments = "/c start /B /REALTIME /AFFINITY 0x1 \"" + pathA + "\" bench 1>nul",
                 RedirectStandardError = true

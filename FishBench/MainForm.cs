@@ -39,6 +39,7 @@ namespace FishBench
             InitializeComponent();
             baseLocationText.Text = settings["base_location"];
             stockfishLocationText.Text = settings["stockfish_location"];
+            benchCommandText.Text = settings["bench_command"];
             int result;
             int.TryParse(settings["amount_test"], out result);
             try { amountTestNumeric.Value = result; }
@@ -95,7 +96,7 @@ namespace FishBench
                 return;
             }
             saveSettings();
-            t = new Tester(baseLocationText.Text, stockfishLocationText.Text);
+            t = new Tester(baseLocationText.Text, stockfishLocationText.Text, benchCommandText.Text);
             t.Amount = (int)amountTestNumeric.Value;
 
             setResult(0, 0, 0, 0, 0, 0, 0, 0, 0);
@@ -126,6 +127,7 @@ namespace FishBench
             settings["amount_test"] = ((int)(amountTestNumeric.Value)).ToString();
             settings["stockfish_location"] = stockfishLocationText.Text;
             settings["base_location"] = baseLocationText.Text;
+            settings["bench_command"] = benchCommandText.Text;
         }
 
         private void terminateButton_Click(object sender, EventArgs e)

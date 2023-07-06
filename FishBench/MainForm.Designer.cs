@@ -43,6 +43,8 @@
             this.terminateButton = new System.Windows.Forms.Button();
             this.resultsBox = new System.Windows.Forms.TextBox();
             this.copyButton = new System.Windows.Forms.Button();
+            this.benchCommandLabel = new System.Windows.Forms.Label();
+            this.benchCommandText = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.amountTestNumeric)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,7 +110,7 @@
             // 
             // amountTestNumeric
             // 
-            this.amountTestNumeric.Location = new System.Drawing.Point(196, 63);
+            this.amountTestNumeric.Location = new System.Drawing.Point(196, 93);
             this.amountTestNumeric.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -131,7 +133,7 @@
             // amountTestsLabel
             // 
             this.amountTestsLabel.AutoSize = true;
-            this.amountTestsLabel.Location = new System.Drawing.Point(12, 66);
+            this.amountTestsLabel.Location = new System.Drawing.Point(12, 96);
             this.amountTestsLabel.Name = "amountTestsLabel";
             this.amountTestsLabel.Size = new System.Drawing.Size(178, 13);
             this.amountTestsLabel.TabIndex = 1;
@@ -139,7 +141,7 @@
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(280, 61);
+            this.startButton.Location = new System.Drawing.Point(280, 91);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(75, 23);
             this.startButton.TabIndex = 4;
@@ -151,7 +153,7 @@
             // 
             this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar.Location = new System.Drawing.Point(113, 91);
+            this.progressBar.Location = new System.Drawing.Point(113, 121);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(323, 23);
             this.progressBar.TabIndex = 5;
@@ -159,7 +161,7 @@
             // progressLabel
             // 
             this.progressLabel.AutoSize = true;
-            this.progressLabel.Location = new System.Drawing.Point(12, 91);
+            this.progressLabel.Location = new System.Drawing.Point(12, 121);
             this.progressLabel.Name = "progressLabel";
             this.progressLabel.Size = new System.Drawing.Size(51, 13);
             this.progressLabel.TabIndex = 1;
@@ -168,7 +170,7 @@
             // progressMessage
             // 
             this.progressMessage.AutoSize = true;
-            this.progressMessage.Location = new System.Drawing.Point(113, 121);
+            this.progressMessage.Location = new System.Drawing.Point(113, 151);
             this.progressMessage.Name = "progressMessage";
             this.progressMessage.Size = new System.Drawing.Size(69, 13);
             this.progressMessage.TabIndex = 6;
@@ -177,7 +179,7 @@
             // terminateButton
             // 
             this.terminateButton.Enabled = false;
-            this.terminateButton.Location = new System.Drawing.Point(361, 61);
+            this.terminateButton.Location = new System.Drawing.Point(361, 91);
             this.terminateButton.Name = "terminateButton";
             this.terminateButton.Size = new System.Drawing.Size(75, 23);
             this.terminateButton.TabIndex = 4;
@@ -188,7 +190,7 @@
             // resultsBox
             // 
             this.resultsBox.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resultsBox.Location = new System.Drawing.Point(15, 150);
+            this.resultsBox.Location = new System.Drawing.Point(15, 180);
             this.resultsBox.Multiline = true;
             this.resultsBox.Name = "resultsBox";
             this.resultsBox.Size = new System.Drawing.Size(307, 124);
@@ -199,7 +201,7 @@
             // 
             // copyButton
             // 
-            this.copyButton.Location = new System.Drawing.Point(328, 250);
+            this.copyButton.Location = new System.Drawing.Point(328, 280);
             this.copyButton.Name = "copyButton";
             this.copyButton.Size = new System.Drawing.Size(89, 23);
             this.copyButton.TabIndex = 10;
@@ -207,11 +209,31 @@
             this.copyButton.UseVisualStyleBackColor = true;
             this.copyButton.Click += new System.EventHandler(this.copyButton_Click);
             // 
+            // benchCommandLabel
+            // 
+            this.benchCommandLabel.AutoSize = true;
+            this.benchCommandLabel.Location = new System.Drawing.Point(12, 67);
+            this.benchCommandLabel.Name = "benchCommandLabel";
+            this.benchCommandLabel.Size = new System.Drawing.Size(90, 13);
+            this.benchCommandLabel.TabIndex = 21;
+            this.benchCommandLabel.Text = "Bench command:";
+            // 
+            // benchCommandText
+            // 
+            this.benchCommandText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.benchCommandText.Location = new System.Drawing.Point(126, 65);
+            this.benchCommandText.Name = "benchCommandText";
+            this.benchCommandText.Size = new System.Drawing.Size(277, 20);
+            this.benchCommandText.TabIndex = 22;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(449, 285);
+            this.ClientSize = new System.Drawing.Size(449, 313);
+            this.Controls.Add(this.benchCommandText);
+            this.Controls.Add(this.benchCommandLabel);
             this.Controls.Add(this.copyButton);
             this.Controls.Add(this.resultsBox);
             this.Controls.Add(this.progressMessage);
@@ -252,6 +274,8 @@
         private System.Windows.Forms.Button terminateButton;
         private System.Windows.Forms.Button copyButton;
         private System.Windows.Forms.TextBox resultsBox;
+        private System.Windows.Forms.Label benchCommandLabel;
+        private System.Windows.Forms.TextBox benchCommandText;
     }
 }
 
