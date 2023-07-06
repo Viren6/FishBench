@@ -44,6 +44,8 @@ namespace FishBench
             int.TryParse(settings["amount_test"], out result);
             try { amountTestNumeric.Value = result; }
             catch { amountTestNumeric.Value = 5; }
+            if (settings["bench_command"] == "")
+                benchCommandText.Text = "bench";
             t = new Tester();
             initHtml();
         }
