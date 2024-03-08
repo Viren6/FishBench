@@ -59,5 +59,25 @@ namespace FishBench.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon Main {
+            get {
+                object obj = ResourceManager.GetObject("Main", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon speedometer_icon__1_ {
+            get {
+                object obj = ResourceManager.GetObject("speedometer-icon (1)", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
     }
 }

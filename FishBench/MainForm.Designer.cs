@@ -1,4 +1,4 @@
-﻿namespace FishBench
+﻿namespace EngineBench
 {
     partial class MainForm
     {
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.baseLocationText = new System.Windows.Forms.TextBox();
             this.stockfishLocationText = new System.Windows.Forms.TextBox();
             this.baseLabel = new System.Windows.Forms.Label();
@@ -45,6 +46,7 @@
             this.copyButton = new System.Windows.Forms.Button();
             this.benchCommandLabel = new System.Windows.Forms.Label();
             this.benchCommandText = new System.Windows.Forms.TextBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.amountTestNumeric)).BeginInit();
             this.SuspendLayout();
             // 
@@ -135,9 +137,9 @@
             this.amountTestsLabel.AutoSize = true;
             this.amountTestsLabel.Location = new System.Drawing.Point(12, 96);
             this.amountTestsLabel.Name = "amountTestsLabel";
-            this.amountTestsLabel.Size = new System.Drawing.Size(178, 13);
+            this.amountTestsLabel.Size = new System.Drawing.Size(167, 13);
             this.amountTestsLabel.TabIndex = 1;
-            this.amountTestsLabel.Text = "Amount of tests (for each Stockfish):";
+            this.amountTestsLabel.Text = "Amount of tests (for each Engine):";
             // 
             // startButton
             // 
@@ -227,11 +229,23 @@
             this.benchCommandText.Size = new System.Drawing.Size(277, 20);
             this.benchCommandText.TabIndex = 22;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(336, 151);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(88, 17);
+            this.checkBox1.TabIndex = 23;
+            this.checkBox1.Text = "Using Std Err";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(449, 313);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.benchCommandText);
             this.Controls.Add(this.benchCommandLabel);
             this.Controls.Add(this.copyButton);
@@ -249,8 +263,9 @@
             this.Controls.Add(this.baseLabel);
             this.Controls.Add(this.stockfishLocationText);
             this.Controls.Add(this.baseLocationText);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
-            this.Text = "FishBench";
+            this.Text = "EngineBench";
             ((System.ComponentModel.ISupportInitialize)(this.amountTestNumeric)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -276,6 +291,7 @@
         private System.Windows.Forms.TextBox resultsBox;
         private System.Windows.Forms.Label benchCommandLabel;
         private System.Windows.Forms.TextBox benchCommandText;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 

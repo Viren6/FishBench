@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FishBench.Properties {
+namespace EngineBench.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

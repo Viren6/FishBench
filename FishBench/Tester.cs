@@ -6,11 +6,14 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using MathNet.Numerics.Distributions;
+using System.Text.RegularExpressions;
+using System.Drawing.Printing;
 
-namespace FishBench
+namespace EngineBench
 {
     class Tester
     {
+        public bool stderr;
         private int amount;
         private string pathA, pathB, benchCommand;
         private decimal sumA, sumB;
@@ -153,7 +156,8 @@ namespace FishBench
                 Arguments = benchCommand,
                 //FileName = "cmd.exe",
                 //Arguments = "/c start /B /REALTIME /AFFINITY 0x1 \"" + pathA + "\" bench 1>nul",
-                RedirectStandardError = true
+                RedirectStandardOutput = !stderr,
+                RedirectStandardError = stderr
             }, infoB = new ProcessStartInfo
             {
                 CreateNoWindow = true,
@@ -162,7 +166,8 @@ namespace FishBench
                 Arguments = benchCommand,
                 //FileName = "cmd.exe",
                 //Arguments = "/c start /B /REALTIME /AFFINITY 0x1 \"" + pathB + "\" bench 1>nul",
-                RedirectStandardError = true
+                RedirectStandardOutput = !stderr,
+                RedirectStandardError = stderr
             };
 
             for (int i = 0; i < amountD; i++)
@@ -183,20 +188,50 @@ namespace FishBench
                     pa.Start();
                 }
 
+                string nps_pattern = @"(\d+\s+nps)|(nps\s+\d+)|((nodes?\/second)\s+:\s+\d+)";
+                Regex r = new Regex(nps_pattern, RegexOptions.IgnoreCase);
+                
                 string lineA = "";
-                while (!(lineA = pa.StandardError.ReadLine()).StartsWith("Nodes/second")) ;
-                obs = decimal.Parse(lineA
-                    .Split(sep, 2, StringSplitOptions.RemoveEmptyEntries)[1]);
-                sumA += obs;
-                listA.Add(obs);
+                Match result = null;
+                if (!stderr)
+                {
+                    while ((lineA = pa.StandardOutput.ReadLine()) != null)
+                    {
+                        result = r.Match(lineA);
+                    }
+                }
+                else
+                {
+                    while ((lineA = pa.StandardError.ReadLine()) != null)
+                    {
+                        result = r.Match(lineA);
+                    }
+                }
+
+                int nps = Int32.Parse(Regex.Match(result.Value, @"\d+").Value);
+                sumA += nps;
+                listA.Add(nps);
                 completedA++;
 
                 string lineB = "";
-                while (!(lineB = pb.StandardError.ReadLine()).StartsWith("Nodes/second")) ;
-                obs = decimal.Parse(lineB
-                    .Split(sep, 2, StringSplitOptions.RemoveEmptyEntries)[1]);
-                sumB += obs;
-                listB.Add(obs);
+                result = null;
+                if (!stderr)
+                {
+                    while ((lineB = pb.StandardOutput.ReadLine()) != null)
+                    {
+                        result = r.Match(lineB);
+                    }
+                }
+                else
+                {
+                    while ((lineB = pb.StandardError.ReadLine()) != null)
+                    {
+                        result = r.Match(lineB);
+                    }
+                }
+                int nps2 = Int32.Parse(Regex.Match(result.Value, @"\d+").Value);
+                sumB += nps2;
+                listB.Add(nps2);
                 completedB++;
 
 

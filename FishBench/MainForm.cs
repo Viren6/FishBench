@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FishBench
+namespace EngineBench
 {
     public partial class MainForm : Form
     {
@@ -30,7 +30,7 @@ namespace FishBench
         }
 
         string finishedMask = "Finished: {0}/{1}";
-        FishSettings settings = new FishSettings("FishBenchSettings.txt");
+        FishSettings settings = new FishSettings("EngineBenchSettings.txt");
         bool validPathBase, validPathStockfish;
         Tester t;
         public MainForm()
@@ -100,6 +100,7 @@ namespace FishBench
             saveSettings();
             t = new Tester(baseLocationText.Text, stockfishLocationText.Text, benchCommandText.Text);
             t.Amount = (int)amountTestNumeric.Value;
+            t.stderr = checkBox1.Checked;
 
             setResult(0, 0, 0, 0, 0, 0, 0, 0, 0);
             progressBar.Value = 0;
@@ -173,6 +174,12 @@ namespace FishBench
             t.Interval = 400;
             t.Start();
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void initHtml()
         {
             htmlFormat = "";
